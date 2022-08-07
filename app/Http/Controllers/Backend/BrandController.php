@@ -29,7 +29,7 @@ class BrandController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.pages.brands.create');
     }
 
     /**
@@ -40,7 +40,23 @@ class BrandController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $brand = new Brand();
+        $brand->name                   = $request->name;
+        $brand->slug                   = Str::slug($request->name);
+        $brand->description            = $request->description;
+        $brand->status                 = $request->status;
+
+        if( $request->image ){
+            $image = $request->file('image');
+            $img = rand(). '.' . $image->getClientOriginalExtension();
+            $location  = public_path('backend/img/brand/' . $img);
+            Image::make($image)->save($location);
+            $brand->image = $img;
+        }
+
+        $brand->save();
+        return redirect()->route('brand.manage');
+
     }
 
     /**

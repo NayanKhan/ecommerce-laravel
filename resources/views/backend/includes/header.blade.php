@@ -2,4 +2,4 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<title>Professional IT Training Institute in Bangladesh</title>
+<title>Ecommerce Multivendor Website</title>
