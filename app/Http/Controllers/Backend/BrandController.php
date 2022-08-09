@@ -53,7 +53,7 @@ class BrandController extends Controller
             Image::make($image)->save($location);
             $brand->image = $img;
         }
-
+        
         $brand->save();
         return redirect()->route('brand.manage');
 

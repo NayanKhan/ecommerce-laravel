@@ -16,7 +16,7 @@
       <div class="col-lg-12">
         <div class="card bd-0 shadow-base">
           <div class="pd-25">
-              <form action="{{ route('brand.store') }}" method="POST">
+              <form action="{{ route('brand.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
 
