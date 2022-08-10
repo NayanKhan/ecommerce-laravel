@@ -15,3 +15,7 @@ i.fa.fa-trash {
     color: red;
     font-size: 16px;
 }
+
+li {
+    display: inline-block;
+}
