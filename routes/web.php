@@ -36,6 +36,16 @@ Route::group([ 'prefix' => 'admin' ], function(){
         Route::post('/destroy/{id}', 'App\Http\Controllers\Backend\BrandController@destroy') ->name('brand.destroy');
     });
 
+     // This Route Are For category Management
+     Route::prefix('/category')->group(function () {
+        Route::get('/manage', 'App\Http\Controllers\Backend\CategoryController@index') ->name('category.manage');
+        Route::get('/create', 'App\Http\Controllers\Backend\CategoryController@create') ->name('category.create');
+        Route::post('/store', 'App\Http\Controllers\Backend\CategoryController@store') ->name('category.store');
+        Route::get('/edit/{id}', 'App\Http\Controllers\Backend\CategoryController@edit') ->name('category.edit');
+        Route::post('/update/{id}', 'App\Http\Controllers\Backend\CategoryController@update') ->name('category.update');
+        Route::post('/destroy/{id}', 'App\Http\Controllers\Backend\CategoryController@destroy') ->name('category.destroy');
+    });
+
 });
 
 Route::get('/dashboard', function () {

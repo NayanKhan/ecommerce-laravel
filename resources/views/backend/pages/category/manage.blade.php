@@ -5,7 +5,7 @@
 <div class="br-pagetitle">
     <i class="icon ion-ios-home-outline"></i>
     <div>
-    <h4>Manage All The Brand Information</h4>
+    <h4>Manage All The Product Category Information</h4>
     <p class="mg-b-0">Do bigger things with Bracket plus, the responsive bootstrap 4 admin template.</p>
     </div>
 </div>
@@ -23,7 +23,7 @@
                     <thead class="thead-dark">
                         <tr>
                         <th scope="col">Sl. No</th>
-                        <th scope="col">Brand Name</th>
+                        <th scope="col">Category Name</th>
                         <th scope="col">Description</th>
                         <th scope="col">images</th>
                         <th scope="col">Status</th>
@@ -36,38 +36,38 @@
                         @php
                            $i=0; 
                         @endphp
-                        @foreach ($brands as $brand)
+                        @foreach ($categories as $category)
                             
                         @php
                            $i++;
                         @endphp
                         <tr>
                         <th scope="row">{{ $i }}</th>
-                        <td>{{ $brand->name}}</td>
-                        <td>{{ $brand->description}}</td>
+                        <td>{{ $category->name}}</td>
+                        <td>{{ $category->description}}</td>
                         <td>
-                        @if ( $brand->image == NULL)
-                             <img src="{{ asset('backend/img/brand/avater.png') }}" width="40" alt="">
+                        @if ( $category->image == NULL)
+                             <img src="{{ asset('backend/img/category/avater.png') }}" width="40" alt="">
 
                         @else 
-                            <img src="{{ asset('backend/img/brand/'. $brand->image) }}" width="40" alt="">
+                            <img src="{{ asset('backend/img/category/'. $brand->image) }}" width="40" alt="">
                         @endif
                         </td>
                         <td>
-                            @if ($brand->status == 1)
+                            @if ($category->status == 1)
                                 <span class="badge badge-success">Active</span>
-                            @elseif ($brand->status == 2)
+                            @elseif ($category->status == 2)
                                 <span class="badge badge-danger">Inactive</span>
                             @endif    
                         </td>
                         <td>
                             <ul class="custom-action">
-                                <li><a href="{{ route ('brand.edit', $brand->id ) }}"><i class="fa fa-edit"></i></a></li>
-                                <li><a href="" data-toggle="modal" data-target="#brand{{ $brand->id }}"><i class="fa fa-trash"></i></a></li>
+                                <li><a href="{{ route ('category.edit', $category->id ) }}"><i class="fa fa-edit"></i></a></li>
+                                <li><a href="" data-toggle="modal" data-target="#category{{ $category->id }}"><i class="fa fa-trash"></i></a></li>
                             </ul>
                         </td>
                         <!-- Delete Modal Start -->
-                            <div class="modal fade" id="brand{{ $brand->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="category{{ $category->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                             <div class="modal-content">
                             <div class="modal-header">
@@ -79,7 +79,7 @@
                             <div class="modal-body">
                                 <ul>
                                     <li>
-                                        <form action="{{route ('brand.destroy', $brand->id) }}" method="POST">
+                                        <form action="{{route ('category.destroy', $category->id) }}" method="POST">
                                             @csrf
                                             <button type="submit" class="btn btn-danger">Confirm</button>
                                         </form>
@@ -98,9 +98,9 @@
                        
                     </tbody>
                 </table>
-                @if ($brands->count()== 0 )
+                @if ($categories->count()== 0 )
                     <div class="alert alert-info">
-                        No. Brand Added Yet. Please Add a Brand First.
+                        No. Category Added Yet. Please Add a Category First.
                     </div>
                 @endif
             </div>
