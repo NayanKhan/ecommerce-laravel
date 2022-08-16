@@ -19,7 +19,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::orderBy('id', 'ASC') ->get();
-        return view('backend.pages.category.manage', compact('categories') );
+        return view('backend.pages.categories.manage', compact('categories') );
     }
 
     /**
@@ -29,7 +29,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        $primary_category = Category::orderBy('id', 'ASC')->where('parent_id', 0)->get();;
+        return view('backend.pages.categories.create', compact('primary_category') );
     }
 
     /**
@@ -40,7 +41,31 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required | max:255',
+        ],[
+            'name.required' => 'Brand Name Can Not be Empty!',
+        ]);
+
+
+
+        $categories = new Category();
+        $categories->name                   = $request->name;
+        $categories->slug                   = Str::slug($request->name);
+        $categories->description            = $request->description;
+        $categories->parent_id              = $request->parent_id;
+        $categories->status                 = $request->status;
+
+        if( $request->image ){
+            $image = $request->file('image');
+            $img = rand(). '.' . $image->getClientOriginalExtension();
+            $location  = public_path('backend/img/categories/' . $img);
+            Image::make($image)->save($location);
+            $categories->image = $img;
+        }
+        
+        $categories->save();
+        return redirect()->route('category.manage');
     }
 
     /**

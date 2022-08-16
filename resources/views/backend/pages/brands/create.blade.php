@@ -44,7 +44,7 @@
                     <div class="form-group">
                       <label>Status</label>
                       <select name="status" class="form-control">
-                        <option>Please Slecet the Status</option>
+                        <option value="2">Please Slecet the Status</option>
                         <option value="1">Active</option>
                         <option value="2">Inactive</option>
                       </select>

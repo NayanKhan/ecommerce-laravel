@@ -26,6 +26,7 @@
                         <th scope="col">Category Name</th>
                         <th scope="col">Description</th>
                         <th scope="col">images</th>
+                        <th scope="col">Parent Category</th>
                         <th scope="col">Status</th>
                         <th scope="col">Action</th>
                         </tr>
@@ -47,11 +48,18 @@
                         <td>{{ $category->description}}</td>
                         <td>
                         @if ( $category->image == NULL)
-                             <img src="{{ asset('backend/img/category/avater.png') }}" width="40" alt="">
+                             <img src="{{ asset('backend/img/categories/avater.png') }}" width="40" alt="">
 
                         @else 
-                            <img src="{{ asset('backend/img/category/'. $brand->image) }}" width="40" alt="">
+                            <img src="{{ asset('backend/img/categories/'. $category->image) }}" width="40" alt="">
                         @endif
+                        </td>
+                        <td>
+                            @if ($category->parent_id == 0)
+                            <span class="badge badge-primary">Primary Category</span>
+                            @else 
+                                <span class="badge badge-info">{{$category->parent->name}}</span>
+                            @endif    
                         </td>
                         <td>
                             @if ($category->status == 1)

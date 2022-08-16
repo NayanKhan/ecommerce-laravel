@@ -27,7 +27,7 @@ Route::group([ 'prefix' => 'admin' ], function(){
     Route::get('/dashboard', "App\Http\Controllers\Backend\DashboardController@dashboard")->name('admin.dashboard');
 
      // This Route Are For Branch Management
-     Route::prefix('/brand')->group(function () {
+     Route::prefix('/brands')->group(function () {
         Route::get('/manage', 'App\Http\Controllers\Backend\BrandController@index') ->name('brand.manage');
         Route::get('/create', 'App\Http\Controllers\Backend\BrandController@create') ->name('brand.create');
         Route::post('/store', 'App\Http\Controllers\Backend\BrandController@store') ->name('brand.store');
@@ -37,7 +37,7 @@ Route::group([ 'prefix' => 'admin' ], function(){
     });
 
      // This Route Are For category Management
-     Route::prefix('/category')->group(function () {
+     Route::prefix('/categories')->group(function () {
         Route::get('/manage', 'App\Http\Controllers\Backend\CategoryController@index') ->name('category.manage');
         Route::get('/create', 'App\Http\Controllers\Backend\CategoryController@create') ->name('category.create');
         Route::post('/store', 'App\Http\Controllers\Backend\CategoryController@store') ->name('category.store');
