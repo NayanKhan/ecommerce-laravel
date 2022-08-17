@@ -11,7 +11,7 @@
     </li><!-- br-menu-item -->
 
    
-   <!-- Branch Management Menu Start -->
+   <!-- Brands Management Menu Start -->
 
    <label class="sidebar-label pd-x-10 mg-t-25 mg-b-20 tx-info">Education Department</label>
 
@@ -26,35 +26,35 @@
       </ul>
     </li>
 
-    <!-- Branch Management Menu Ends -->
+    <!-- Brands Management Menu Ends -->
     
-    <!-- Course Management Menu Start -->
+    <!-- Category Management Menu Start -->
 
     <li class="br-menu-item">
       <a href="#" class="br-menu-link with-sub">
         <i class="menu-item-icon icon ion-ios-photos-outline tx-20"></i>
-        <span class="menu-item-label">Category</span>
+        <span class="menu-item-label">Categories</span>
       </a><!-- br-menu-link -->
       <ul class="br-menu-sub">
         <li class="sub-item"><a href="{{route('category.manage')}}" class="sub-link">Manage All Category</a></li>
         <li class="sub-item"><a href="{{route('category.create')}}" class="sub-link">Create New Category</a></li>
       </ul>
     </li>
-  <!-- Course Management Menu Ends -->
+  <!-- Category Management Menu Ends -->
 
-    <!-- Course Management Menu Start -->
+     <!-- Products Management Menu Start -->
 
-    <li class="br-menu-item">
+     <li class="br-menu-item">
       <a href="#" class="br-menu-link with-sub">
         <i class="menu-item-icon icon ion-ios-photos-outline tx-20"></i>
-        <span class="menu-item-label">Coupon</span>
+        <span class="menu-item-label">Products</span>
       </a><!-- br-menu-link -->
       <ul class="br-menu-sub">
-        <li class="sub-item"><a href="" class="sub-link">Manage All Coupon</a></li>
-        <li class="sub-item"><a href="" class="sub-link">Create New Coupon</a></li>
+        <li class="sub-item"><a href="{{route('product.manage')}}" class="sub-link">Manage All Products</a></li>
+        <li class="sub-item"><a href="{{route('product.create')}}" class="sub-link">Create New Products</a></li>
       </ul>
     </li>
-  <!-- Course Management Menu Ends -->
+  <!-- Products Management Menu Ends -->
 
   <!-- Course Management Menu Start -->
 

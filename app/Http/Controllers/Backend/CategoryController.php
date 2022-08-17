@@ -107,6 +107,14 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        $request->validate([
+            'name' => 'required | max:255',
+        ],[
+            'name.required' => 'Brand Name Can Not be Empty!',
+        ]);
+
+        
         $category = Category::find($id);
         $category->name                   = $request->name;
         $category->slug                   = Str::slug($request->name);
