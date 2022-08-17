@@ -48,8 +48,7 @@
                         <td>{{ $category->description}}</td>
                         <td>
                         @if ( $category->image == NULL)
-                             <img src="{{ asset('backend/img/categories/avater.png') }}" width="40" alt="">
-
+                             No Image Uploaded
                         @else 
                             <img src="{{ asset('backend/img/categories/'. $category->image) }}" width="40" alt="">
                         @endif
@@ -79,7 +78,7 @@
                             <div class="modal-dialog" role="document">
                             <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title text-center" id="exampleModalLabel">Do You Confirm to Delete This brand?</h5>
+                                <h5 class="modal-title text-center" id="exampleModalLabel">Do You Confirm to Delete This Category?</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                                 </button>

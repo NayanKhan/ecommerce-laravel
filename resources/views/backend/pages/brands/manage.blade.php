@@ -47,7 +47,7 @@
                         <td>{{ $brand->description}}</td>
                         <td>
                         @if ( $brand->image == NULL)
-                             <img src="{{ asset('backend/img/brand/avater.png') }}" width="40" alt="">
+                             No Image Uploaded
 
                         @else 
                             <img src="{{ asset('backend/img/brand/'. $brand->image) }}" width="40" alt="">

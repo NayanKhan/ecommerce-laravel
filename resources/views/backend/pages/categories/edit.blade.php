@@ -5,8 +5,8 @@
 <div class="br-pagetitle">
     <i class="icon ion-ios-home-outline"></i>
     <div>
-    <h4>Update the Branch Information</h4>
-    <p class="mg-b-0">Do bigger things with Bracket plus, the responsive bootstrap 4 admin template.</p>
+    <h4>Update a Category</h4>
+    <p class="mg-b-0">Do bigger things with Bracket plus, the responsive Codex Hunter</p>
     </div>
 </div>
 
@@ -16,21 +16,20 @@
       <div class="col-lg-12">
         <div class="card bd-0 shadow-base">
           <div class="pd-25">
-        
-              <form action="{{ route('brand.update', $brand->id) }}" enctype="multipart/form-data" method="POST">
+              <form action="{{ route('category.update', $category->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
 
                   <div class="col-lg-6">
 
                     <div class="form-group">
-                      <label>Brand Name</label>
-                      <input type="text" name="name" class="form-control" value="{{ $brand->name }}" autocomplete="off" required="required">
+                      <label>Category Name</label>
+                      <input type="text" name="name" value="{{ $category->name }}" class="form-control" autocomplete="off" required="required">
                     </div>
                     
                     <div class="form-group">
                       <label>Description</label>
-                      <input type="text" name="description" value="{{ $brand->description }}" class="form-control" autocomplete="off" required="required">
+                      <input type="text" name="description" value="{{ $category->description }}" class="form-control" autocomplete="off" required="required">
                     </div>
 
                   </div>
@@ -38,34 +37,46 @@
                   <div class="col-lg-6">
 
                   <div class="form-group">
-                      <label>Brand Thumbnail</label>
+                      <label>Category Thumbnail</label>
                       <br>
-                      @if ( $brand->image == NULL)
-                             <img src="{{ asset('backend/img/brand/avater.png') }}" width="40" alt="">
+                      @if ( $category->image == NULL)
+                             <img src="{{ asset('backend/img/categories/avater.png') }}" width="40" alt="">
 
                       @else 
-                          <img src="{{ asset('backend/img/brand/'. $brand->image) }}" width="40" alt="">
+                          <img src="{{ asset('backend/img/categories/'. $category->image) }}" width="40" alt="">
                       @endif
                       <input type="file" name="image" class="form-control" >
                     </div>
 
                     <div class="form-group">
-                      <label>Status</label>
-                      <select name="status" class="form-control">
-                        <option>Please Slecet the Status</option>
-                        <option value="1" @if( $brand->status == 1) selected @endif>Active</option>
-                        <option value="2" @if( $brand->status == 2) selected @endif>Inactive</option>
+                      <label>Parent Category</label>
+                      <select name="parent_id" class="form-control">
+                        <option value="0">Please Slecet Primary Category if any</option>
+                        @foreach ($primary_category as $cat)
+                          <option value="{{ $cat->id}}" {{$cat->id == $category->parent_id ? 'selected' : ''}}> {{$cat->name}}</option>
+                        @endforeach
                       </select>
                     </div>
 
                   </div>
 
                   <div class="col-lg-12">
+
                     <div class="form-group">
-                      <input type="submit" name="addBrand" class="btn btn-teal m-b-10" value="Update New Brand">
+                        <label>Status</label>
+                        <select name="status" class="form-control">
+                          <option>Please Slecet the Status</option>
+                          <option value="1" @if( $category->status == 1) selected @endif>Active</option>
+                        <option value="2" @if( $category->status == 2) selected @endif>Inactive</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                      <input type="submit" name="Update Category" class="btn btn-teal m-b-10" value="Add New Category">
                     </div>
                   </div>
                 </div>
+
                 </div>
               </form>
 
