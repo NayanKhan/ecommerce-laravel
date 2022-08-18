@@ -25,10 +25,12 @@
                         <th scope="col">Sl. No</th>
                         <th scope="col">Products Title</th>
                         <th scope="col">Description</th>
-                        <th scope="col">Brand Name</th>
+                        <th scope="col">Porduct Image</th>
                         <th scope="col">Category Name</th>
+                        <th scope="col">Brand Name</th>
                         <th scope="col">Quantity</th>
                         <th scope="col">Price</th>
+                        <th scope="col">Offer Price</th>
                         <th scope="col">Status</th>
                         <th scope="col">Action</th>
                         </tr>
@@ -46,7 +48,7 @@
                         @endphp
                         <tr>
                         <th scope="row">{{ $i }}</th>
-                        <td>{{ $product->name}}</td>
+                        <td>{{ $product->title}}</td>
                         <td>{{ $product->description}}</td>
                         <td>
                         @if ( $product->image == NULL)
@@ -55,11 +57,13 @@
                             <img src="{{ asset('backend/img/products/'. $product->image) }}" width="40" alt="">
                         @endif
                         </td>
-                        <td>{{ $product->quantity}}</td>
-                        <td>{{ $product->price}}</td>
                         <td>
-                             
+                            
                         </td>
+                        <td>{{ $product->brand->name}}</td>
+                        <td>{{ $product->quantity}}</td>
+                        <td>{{ $product->offerprice}}</td>
+                        <td>{{ $product->price}}</td>
                         <td>
                             @if ($product->status == 1)
                                 <span class="badge badge-success">Active</span>
