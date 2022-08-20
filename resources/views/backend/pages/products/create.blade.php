@@ -77,7 +77,7 @@
 
                       <div class="form-group">
                         <label>Category</label>
-                        <select name="parent_id" class="form-control">
+                        <select name="category_id" class="form-control">
                           <option value="0">Please Slecet Brand if any</option>
                           @foreach (App\Models\Backend\Category::orderBy('id', 'ASC')->where('parent_id', 0) ->get(); as $category)
                             <option value="{{ $category->id}}"> {{$category->name}}</option>

@@ -23,9 +23,9 @@
                     <thead class="thead-dark">
                         <tr>
                         <th scope="col">Sl. No</th>
+                        <th scope="col">Porduct Image</th>
                         <th scope="col">Products Title</th>
                         <th scope="col">Description</th>
-                        <th scope="col">Porduct Image</th>
                         <th scope="col">Category Name</th>
                         <th scope="col">Brand Name</th>
                         <th scope="col">Quantity</th>
@@ -47,19 +47,18 @@
                            $i++;
                         @endphp
                         <tr>
-                        <th scope="row">{{ $i }}</th>
+                        <th scope="row">{{ $i }}</th><td>
+                            @php $j=1; @endphp
+                            @foreach ( $product->images as $img)
+                                @if ($j > 0)
+                                    <img src="{{ asset('backend/img/products/'. $img->image) }}" width="80" alt="">
+                                @endif
+                                @php $j--; @endphp
+                            @endforeach
+                        </td>
                         <td>{{ $product->title}}</td>
                         <td>{{ $product->description}}</td>
-                        <td>
-                        @if ( $product->image == NULL)
-                             No Image Uploaded
-                        @else 
-                            <img src="{{ asset('backend/img/products/'. $product->image) }}" width="40" alt="">
-                        @endif
-                        </td>
-                        <td>
-                            
-                        </td>
+                        <td> {{ $product->category->name}} </td>
                         <td>{{ $product->brand->name}}</td>
                         <td>{{ $product->quantity}}</td>
                         <td>{{ $product->offerprice}}</td>

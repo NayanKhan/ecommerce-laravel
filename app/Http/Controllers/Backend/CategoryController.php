@@ -29,7 +29,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $primary_category = Category::orderBy('id', 'ASC')->where('parent_id', 0)->get();;
+        $primary_category = Category::orderBy('id', 'ASC')->where('parent_id', 0)->get();
         return view('backend.pages.categories.create', compact('primary_category') );
     }
 
