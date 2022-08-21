@@ -60,9 +60,9 @@
                         <td>{{ $product->description}}</td>
                         <td> {{ $product->category->name}} </td>
                         <td>{{ $product->brand->name}}</td>
-                        <td>{{ $product->quantity}}</td>
-                        <td>{{ $product->offerprice}}</td>
+                        <td>{{ $product->quantity}}</td>                        
                         <td>{{ $product->price}}</td>
+                        <td>{{ $product->offerprice}}</td>
                         <td>
                             @if ($product->status == 1)
                                 <span class="badge badge-success">Active</span>

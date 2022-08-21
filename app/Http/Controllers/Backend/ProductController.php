@@ -80,17 +80,6 @@ class ProductController extends Controller
                 $p_image->save();
             }
         }
-        // if( $request->image ){
-        //     $image = $request->file('image');
-        //     $img = rand(). '.' . $image->getClientOriginalExtension();
-        //     $location  = public_path('backend/img/products/' . $img);
-        //     Image::make($image)->save($location);
-
-        //     $p_image = new ProductImage();
-        //     $p_image->product_id= $product->id;
-        //     $p_image->image = $img;
-        //     $p_image->save();
-        // }
         return redirect()->route('product.manage');
 
 
@@ -115,7 +104,13 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = Product::find($id);
+        if( !is_null ($product) ){
+            return view ('backend.pages.products.edit', compact('product'));
+        }
+        else{
+            return redirect()->route('product.manage');
+        }
     }
 
     /**
@@ -127,7 +122,45 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'title' => 'required | max:255',
+            'description' => 'required | max:1000',
+            'price' => 'required | numeric',
+        ],[
+            'title.required' => 'Product Title Can Not be Empty!',
+            'description.required' => 'Product Description Can Not be Empty!',
+            'price.required' => 'Product price Can Not be Empty!',
+        ]);
+
+
+        $product = Product::find($id);
+        $product->title                   = $request->title;
+        $product->slug                    = Str::slug($request->title);
+        $product->description             = $request->description;
+        $product->category_id             = $request->category_id;
+        $product->brand_id                = $request->brand_id;
+        $product->quantity                = $request->quantity;
+        $product->price                   = $request->price;
+        $product->offerprice              = $request->offerprice;
+        $product->status                  = $request->status;
+        $product->save();
+
+        // if( count($request->p_image) > 0 ){
+        //     foreach( $request->p_image as $image){
+
+
+        //         $img = rand(). '.' . $image->getClientOriginalExtension();
+        //         $location  = public_path('backend/img/products/' . $img);
+        //         Image::make($image)->save($location);
+
+        //         $p_image = new ProductImage();
+        //         $p_image->product_id= $product->id;
+        //         $p_image->image = $img;
+        //         $p_image->save();
+        //     }
+        // }
+        return redirect()->route('product.manage');
+
     }
 
     /**
@@ -138,6 +171,13 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = Product::find($id);
+        if( !is_null ($product) ){
+            $product->delete();
+            return redirect()->route('product.manage');
+        }
+        else{
+            return redirect()->route('product.manage');
+        }
     }
 }
