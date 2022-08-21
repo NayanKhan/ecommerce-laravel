@@ -13,7 +13,7 @@
    
    <!-- Brands Management Menu Start -->
 
-   <label class="sidebar-label pd-x-10 mg-t-25 mg-b-20 tx-info">Education Department</label>
+   <label class="sidebar-label pd-x-10 mg-t-25 mg-b-20 tx-info">Products Management</label>
 
     <li class="br-menu-item">
       <a href="#" class="br-menu-link with-sub">
@@ -56,46 +56,46 @@
     </li>
   <!-- Products Management Menu Ends -->
 
-  <!-- Course Management Menu Start -->
+
+    <!-- All Area Management Menu Start -->
+    <label class="sidebar-label pd-x-10 mg-t-25 mg-b-20 tx-info">All Area Management</label>
 
     <li class="br-menu-item">
       <a href="#" class="br-menu-link with-sub">
         <i class="menu-item-icon icon ion-ios-photos-outline tx-20"></i>
-        <span class="menu-item-label">Course Curriculum</span>
+        <span class="menu-item-label">Divisions</span>
       </a><!-- br-menu-link -->
       <ul class="br-menu-sub">
-        <li class="sub-item"><a href="" class="sub-link">Manage Course Curriculum</a></li>
-        <li class="sub-item"><a href="" class="sub-link">Create New Course Curriculum</a></li>
+        <li class="sub-item"><a href="{{route('division.manage')}}" class="sub-link">Manage All Division</a></li>
+        <li class="sub-item"><a href="{{route('division.create')}}" class="sub-link">Create New Division</a></li>
       </ul>
     </li>
-  <!-- Course Management Menu Ends -->
+    <!-- All Area Management Menu Ends -->
 
-  <!-- Batch Management Menu Start -->
-
+    <!-- All District Management Menu Start -->
     <li class="br-menu-item">
       <a href="#" class="br-menu-link with-sub">
         <i class="menu-item-icon icon ion-ios-photos-outline tx-20"></i>
-        <span class="menu-item-label">All Batches</span>
+        <span class="menu-item-label">Districts</span>
       </a><!-- br-menu-link -->
       <ul class="br-menu-sub">
-        <li class="sub-item"><a href="" class="sub-link">Addmission Going On</a></li>
-        <li class="sub-item"><a href="" class="sub-link">All Batches</a></li>
-        <li class="sub-item"><a href="" class="sub-link">Add New Batches</a></li>
+        <li class="sub-item"><a href="{{route('district.manage')}}" class="sub-link">Manage All District</a></li>
+        <li class="sub-item"><a href="{{route('district.create')}}" class="sub-link">Create New District</a></li>
       </ul>
     </li>
-  <!-- Batch Management Menu Ends -->
+    <!-- All District Management Menu Ends -->
 
-  <!-- Mentor Management Menu Start -->
-   <label class="sidebar-label pd-x-10 mg-t-25 mg-b-20 tx-info">HR. Department</label>
+  <!-- User Management Menu Start -->
+   <label class="sidebar-label pd-x-10 mg-t-25 mg-b-20 tx-info">User Management</label>
 
     <li class="br-menu-item">
       <a href="#" class="br-menu-link with-sub">
         <i class="menu-item-icon icon ion-ios-contact tx-20"></i>
-        <span class="menu-item-label">Mentor</span>
+        <span class="menu-item-label">Users</span>
       </a><!-- br-menu-link -->
       <ul class="br-menu-sub">
-        <li class="sub-item"><a href="" class="sub-link">Manage All Mentor</a></li>
-        <li class="sub-item"><a href="" class="sub-link">Create New Mentor</a></li>
+        <li class="sub-item"><a href="" class="sub-link">Manage All User</a></li>
+        <li class="sub-item"><a href="" class="sub-link">Create New User</a></li>
       </ul>
     </li>
     <!-- Course Management Menu Ends -->
