@@ -63,6 +63,11 @@
                     
                     <div class="form-group">
                         <label>Featured Image</label>
+                        @if ( $product->images == NULL)
+                             No Choosen Image
+                      @else 
+                          <img src="{{ asset('backend/img/products/'. $product->image) }}" width="40" alt="">
+                      @endif
                         <input type="file" name="p_image[]" class="form-control" >
                     </div>
                   

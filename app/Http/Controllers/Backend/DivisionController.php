@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\str;
+
 use App\Models\Backend\Division;
+use App\Models\Backend\District;
 
 class DivisionController extends Controller
 {
@@ -15,7 +18,7 @@ class DivisionController extends Controller
      */
     public function index()
     {
-        $divisions = Division::orderBy('id', 'ASC') ->get();
+        $divisions = Division::orderBy('priority', 'ASC') ->get();
         return view('backend.pages.divisions.manage', compact('divisions') );
     }
 
@@ -26,7 +29,7 @@ class DivisionController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.pages.divisions.create');
     }
 
     /**
@@ -37,7 +40,20 @@ class DivisionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required | max:255',
+            'priority' => 'required | max:255',
+        ],[
+            'name.required' => 'Division Name Can Not be Empty!',
+            'priority.required' => 'Priority Number Can Not be Empty!',
+        ]);
+
+        $division = new Division();
+        $division->name                   = $request->name;
+        $division->priority               = $request->priority;
+        $division->save();
+        return redirect()->route('division.manage');
+
     }
 
     /**
@@ -59,7 +75,13 @@ class DivisionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $division = Division::find($id);
+        if( !is_null ($division) ){
+            return view ('backend.pages.divisions.edit', compact('division'));
+        }
+        else{
+            return route('division.manage');
+        }
     }
 
     /**
@@ -71,7 +93,19 @@ class DivisionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required | max:255',
+            'priority' => 'required | max:255',
+        ],[
+            'name.required' => 'Division Name Can Not be Empty!',
+            'priority.required' => 'Priority Number Can Not be Empty!',
+        ]);
+
+        $division = Division::find($id);
+        $division->name                   = $request->name;
+        $division->priority               = $request->priority;
+        $division->save();
+        return redirect()->route('division.manage');
     }
 
     /**
@@ -82,6 +116,18 @@ class DivisionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $division = Division::find($id);
+        if( !is_null ($division) ){
+            $districts = District::where('division_id', $division->id)->get();
+            foreach ($districts as $district){
+                $district->delete();
+            }
+
+            $division->delete();
+            return redirect()->route('division.manage');
+        }
+        else{
+            return redirect()->route('division.manage');
+        }
     }
 }

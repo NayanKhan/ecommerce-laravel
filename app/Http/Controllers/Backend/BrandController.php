@@ -105,6 +105,13 @@ class BrandController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        $request->validate([
+            'name' => 'required | max:255',
+        ],[
+            'name.required' => 'Brand Name Can Not be Empty!',
+        ]);
+
         $brand = Brand::find($id);
         $brand->name                   = $request->name;
         $brand->slug                   = Str::slug($request->name);
