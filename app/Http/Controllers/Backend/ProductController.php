@@ -145,25 +145,19 @@ class ProductController extends Controller
         $product->status                  = $request->status;
         $product->save();
 
-        if( !empty (count($request->p_image)) > 0 ){
-            foreach( $request->p_image as $image){
-
-                if( File::exists('backend/img/products/'. $product->image));
-                {
-                    File::delete('backend/img/products/'. $product->image);
-                }
+        // if( !empty (count($request->p_image)) > 0 ){
+        //     foreach( $request->p_image as $image){
                 
-                
-                $img = rand(). '.' . $image->getClientOriginalExtension();
-                $location  = public_path('backend/img/products/' . $img);
-                Image::make($image)->save($location);
+        //         $img = rand(). '.' . $image->getClientOriginalExtension();
+        //         $location  = public_path('backend/img/products/' . $img);
+        //         Image::make($image)->save($location);
 
-                $p_image = new ProductImage();
-                $p_image->product_id= $product->id;
-                $p_image->image = $img;
-                $p_image->save();
-            }
-        }
+        //         $p_image = new ProductImage();
+        //         $p_image->product_id= $product->id;
+        //         $p_image->image = $img;
+        //         $p_image->save();
+        //     }
+        // }
         return redirect()->route('product.manage');
 
     }
@@ -177,8 +171,9 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $product = Product::find($id);
+        
         if( !is_null ($product) ){
-
+            
             $p_images = ProductImage::where('product_id', $product->id)->get();
             foreach ($p_images as $p_image){
                 $p_image->delete();

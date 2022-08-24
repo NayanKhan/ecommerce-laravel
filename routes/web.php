@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes
+| Frontend Routes
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
@@ -12,14 +12,29 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+    Route::get('/', "App\Http\Controllers\Frontend\PagesController@index")->name('home');
+    // Route::get('/courses', "App\Http\Controllers\Frontend\PagesController@course")->name('allcourse');
+    // Route::get('/batch', "App\Http\Controllers\Frontend\PagesController@batch")->name('batch');
+    // Route::get('/contact', "App\Http\Controllers\Frontend\PagesController@contact")->name('contact');
+    // Route::post('/send-message', "App\Http\Controllers\Frontend\PagesController@sendMail")->name('contact.send');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+/*
+|--------------------------------------------------------------------------
+| Backend Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::get('/about', function () {
-    return view('backend.pages.dashboard');
-});
+// Route::get('/about', function () {
+//     return view('backend.pages.dashboard');
+// });
 
 
 Route::group([ 'prefix' => 'admin' ], function(){

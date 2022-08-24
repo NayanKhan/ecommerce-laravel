@@ -52,9 +52,11 @@
                             @foreach ( $product->images as $img)
                                 @if ($j > 0)
                                     <img src="{{ asset('backend/img/products/'. $img->image) }}" width="80" alt="">
+                                
                                 @endif
                                 @php $j--; @endphp
                             @endforeach
+                            
                         </td>
                         <td>{{ $product->title}}</td>
                         <td>{{ $product->description}}</td>

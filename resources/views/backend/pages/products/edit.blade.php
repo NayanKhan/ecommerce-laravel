@@ -39,7 +39,15 @@
 
                     <div class="form-group">
                         <label>Thumbnail Image 2</label>
+                        @php $j=1; @endphp
+                          @foreach ( $product->images as $img)
+                              @if ($j == 3)
+                                  <img src="{{ asset('backend/img/products/'. $img->image) }}" width="80" alt="">
+                              @endif
+                              @php $j--; @endphp
+                          @endforeach
                         <input type="file" name="p_image[]" class="form-control" >
+                        
                     </div>
 
                   </div>
@@ -63,16 +71,27 @@
                     
                     <div class="form-group">
                         <label>Featured Image</label>
-                        @if ( $product->images == NULL)
-                             No Choosen Image
-                      @else 
-                          <img src="{{ asset('backend/img/products/'. $product->image) }}" width="40" alt="">
-                      @endif
+                        @php $j=1; @endphp
+                        @foreach ( $product->images as $img)
+                            @if ($j == 1)
+                                <img src="{{ asset('backend/img/products/'. $img->image) }}" width="80" alt="">
+                            
+                            @endif
+                            @php $j++; @endphp
+                        @endforeach
                         <input type="file" name="p_image[]" class="form-control" >
                     </div>
                   
                     <div class="form-group">
                         <label>Thumbnail Image 3</label>
+                          @php $j=1; @endphp
+                          @foreach ( $product->images as $img)
+                              @if ($j == 4)
+                                  <img src="{{ asset('backend/img/products/'. $img->image) }}" width="80" alt="">
+                              
+                              @endif
+                              @php $j++; @endphp
+                          @endforeach
                         <input type="file" name="p_image[]" class="form-control" >
                     </div>
 
@@ -100,6 +119,14 @@
 
                       <div class="form-group">
                         <label>Thumbnail Image 1</label>
+                        @php $j=1; @endphp
+                          @foreach ( $product->images as $img)
+                              @if ($j == 2)
+                                  <img src="{{ asset('backend/img/products/'. $img->image) }}" width="80" alt="">
+                              
+                              @endif
+                              @php $j++; @endphp
+                          @endforeach
                         <input type="file" name="p_image[]" class="form-control" >
                       </div>
 

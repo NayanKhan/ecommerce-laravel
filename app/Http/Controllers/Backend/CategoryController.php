@@ -124,7 +124,7 @@ class CategoryController extends Controller
 
         if( !empty( $request->image) ){
 
-            if( File::exists('backend/img/categories/'. $category->image));
+            if( File::exists('backend/img/categories/'. $category->image))
             {
                 File::delete('backend/img/categories/'. $category->image);
             }
@@ -150,7 +150,7 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
 
-        if( File::exists('backend/img/categories/'. $category->image));
+        if( File::exists('backend/img/categories/'. $category->image))
         {
             File::delete('backend/img/categories/'. $category->image);
         }
