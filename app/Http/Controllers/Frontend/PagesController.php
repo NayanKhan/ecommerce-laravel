@@ -17,6 +17,23 @@ class PagesController extends Controller
         return view('frontend.pages.homepage');
     }
 
+    public function about()
+    {
+        return view('frontend.pages.about');
+    }
+
+    public function blog()
+    {
+        return view('frontend.pages.blog');
+    }
+
+
+    public function contact()
+    {
+        return view('frontend.pages.contact');
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *

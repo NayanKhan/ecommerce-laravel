@@ -17,13 +17,9 @@
                         <div class="col-xl-8 d-none d-xl-block">
                             <div class="main-menu position-relative">
                                 <ul>
-                                    <li class="has-children">
-                                        <a href="#"><span>Home</span> <i class="fa fa-angle-down"></i></a>
-                                        <ul class="sub-menu">
-                                            <li><a href="index.html">Home 1</a></li>
-                                            <li><a href="index-2.html">Home 2</a></li>
-                                        </ul>
-                                    </li>
+                                    <li><a href="{{route ('home')}}"> <span>Home</span></a></li>
+                                    <li><a href="{{route ('about')}}"> <span>About</span></a></li>
+                                    
                                     <li class="has-children position-static">
                                         <a href="#"><span>Shop</span> <i class="fa fa-angle-down"></i></a>
                                         <ul class="mega-menu row-cols-4">
@@ -73,26 +69,8 @@
                                             </li>
                                         </ul>
                                     </li>
-                                    <li class="has-children">
-                                        <a href="#"><span>Pages</span> <i class="fa fa-angle-down"></i></a>
-                                        <ul class="sub-menu">
-                                            <li><a href="about.html">About</a></li>
-                                            <li><a href="contact.html">Contact</a></li>
-                                            <li><a href="faq.html">Faq</a></li>
-                                            <li><a href="404-error.html">404 Error</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="has-children">
-                                        <a href="#"><span>Blog</span> <i class="fa fa-angle-down"></i></a>
-                                        <ul class="sub-menu">
-                                            <li><a href="blog.html">Blog</a></li>
-                                            <li><a href="blog-left-sidebar.html">Blog Left Sidebar</a></li>
-                                            <li><a href="blog-right-sidebar.html">Blog Right Sidebar</a></li>
-                                            <li><a href="blog-details.html">Blog Details</a></li>
-                                            <li><a href="blog-details-sidebar.html">Blog Details Sidebar</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="contact.html"> <span>Contact</span></a></li>
+                                    <li><a href="{{route ('blog')}}"> <span>Blog</span></a></li>
+                                    <li><a href="{{route ('contact')}}"> <span>Contact</span></a></li>
                                 </ul>
                             </div>
                         </div>

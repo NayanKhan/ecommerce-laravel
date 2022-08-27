@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
     Route::get('/', "App\Http\Controllers\Frontend\PagesController@index")->name('home');
-    // Route::get('/courses', "App\Http\Controllers\Frontend\PagesController@course")->name('allcourse');
-    // Route::get('/batch', "App\Http\Controllers\Frontend\PagesController@batch")->name('batch');
-    // Route::get('/contact', "App\Http\Controllers\Frontend\PagesController@contact")->name('contact');
+    Route::get('/about', "App\Http\Controllers\Frontend\PagesController@about")->name('about');
+    Route::get('/blog', "App\Http\Controllers\Frontend\PagesController@blog")->name('blog');
+    Route::get('/contact', "App\Http\Controllers\Frontend\PagesController@contact")->name('contact');
     // Route::post('/send-message', "App\Http\Controllers\Frontend\PagesController@sendMail")->name('contact.send');
 
 /*

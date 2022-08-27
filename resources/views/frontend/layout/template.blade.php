@@ -9,6 +9,7 @@
     @include('frontend.includes.header')
     @include('frontend.includes.topbar')
     @include('frontend.includes.menubar')
+    @include('frontend.includes.breadcumb')
 
     @yield('body')
     
