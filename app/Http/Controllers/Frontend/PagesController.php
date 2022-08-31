@@ -4,6 +4,13 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Backend\Product;
+use App\Models\Backend\ProductImage;
+use App\Models\Backend\Brand;
+use App\Models\Backend\Category;
+use Illuminate\Support\str;
+use File;
+use Image;
 
 class PagesController extends Controller
 {
@@ -14,7 +21,8 @@ class PagesController extends Controller
      */
     public function index()
     {
-        return view('frontend.pages.homepage');
+        $newProducts = Product::orderBy('id', 'ASC') ->get();
+        return view('frontend.pages.homepage', compact('newProducts'));
     }
 
     public function about()
@@ -25,6 +33,16 @@ class PagesController extends Controller
     public function blog()
     {
         return view('frontend.pages.blog');
+    }
+
+    public function shop()
+    {
+        return view('frontend.pages.products.product');
+    }
+
+    public function single_product()
+    {
+        return view('frontend.pages.products.single-product');
     }
 
 

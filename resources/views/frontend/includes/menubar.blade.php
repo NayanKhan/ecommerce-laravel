@@ -21,7 +21,7 @@
                                     <li><a href="{{route ('about')}}"> <span>About</span></a></li>
                                     
                                     <li class="has-children position-static">
-                                        <a href="#"><span>Shop</span> <i class="fa fa-angle-down"></i></a>
+                                        <a href="{{route ('shop')}}"><span>Shop</span> <i class="fa fa-angle-down"></i></a>
                                         <ul class="mega-menu row-cols-4">
                                             <li class="col">
                                                 <h4 class="mega-menu-title">Shop Layout</h4>

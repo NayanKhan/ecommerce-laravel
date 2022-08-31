@@ -48,7 +48,7 @@
                                 <li><a href="wishlist.html">Wishlist</a></li>
                                 <li><a href="contact.html">Newsletter</a></li>
                                 <li><a href="contact.html">Help Center</a></li>
-                                <li><a href="contact.html">Conditin</a></li>
+                                <li><a href="contact.html">Condition</a></li>
                                 <li><a href="contact.html">Term Of Use</a></li>
                             </ul>
                         </div>
@@ -89,7 +89,7 @@
                 <div class="row align-items-center">
                     <div class="col-12 text-center">
                         <div class="copyright-content">
-                            <p class="mb-0">© 2021 <strong>Destry </strong> Made width <i class="fa fa-heart text-danger"></i> by <a href="https://hasthemes.com/">HasThemes.</a></p>
+                            <p class="mb-0">© 2022 <strong>Codex Hunter </strong> all right reserved <i class="fa fa-heart text-danger"></i> by <a href="https://nayancse.xyz/">Nayan Khan.</a></p>
                         </div>
                     </div>
                 </div>

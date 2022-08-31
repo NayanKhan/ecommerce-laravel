@@ -1,8 +1,10 @@
 
 
-@extends('frontend.layout.template')    
+@extends('frontend.layout.template')   
 
 @section('body')
+
+    @include('frontend.includes.breadcumb') 
 
 
     <!-- Contact Us Section Start -->

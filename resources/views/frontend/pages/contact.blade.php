@@ -5,6 +5,7 @@
 @section('body')
 
 
+@include('frontend.includes.breadcumb') 
     <!-- Contact Us Section Start -->
     <div class="section section-margin">
         <div class="container">

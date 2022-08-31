@@ -4,6 +4,7 @@
 
 @section('body')
 
+@include('frontend.includes.breadcumb') 
 
     <!-- About Us Section Start -->
     <div class="section section-margin overflow-hidden">
