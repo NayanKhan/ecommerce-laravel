@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Backend\Product;
 use App\Models\Backend\ProductImage;
 use App\Models\Backend\Brand;
+use App\Models\Backend\Slider;
 use App\Models\Backend\Category;
 use Illuminate\Support\str;
 use File;
@@ -22,7 +23,8 @@ class PagesController extends Controller
     public function index()
     {
         $newProducts = Product::orderBy('id', 'ASC') ->get();
-        return view('frontend.pages.homepage', compact('newProducts'));
+        $sliders = Slider::orderBy('id', 'ASC') ->get();
+        return view('frontend.pages.homepage', compact('newProducts', 'sliders'));
     }
 
     public function about()
