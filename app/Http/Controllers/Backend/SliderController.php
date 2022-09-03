@@ -122,7 +122,7 @@ class SliderController extends Controller
 
 
 
-        $slider = new Slider();
+        $slider = Slider::find($id);
         $slider->name                   = $request->name;
         $slider->title                  = $request->title;
         $slider->description            = $request->description;
@@ -130,7 +130,7 @@ class SliderController extends Controller
         $slider->btn_link               = $request->btn_link;
         $slider->status                 = $request->status;
 
-        if( $request->image ){
+        if( !empty( $request->image) ){
             $image = $request->file('image');
             $img = rand(). '.' . $image->getClientOriginalExtension();
             $location  = public_path('backend/img/slider/' . $img);
