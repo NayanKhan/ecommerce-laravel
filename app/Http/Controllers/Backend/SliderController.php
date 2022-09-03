@@ -158,6 +158,10 @@ class SliderController extends Controller
         }
 
         $slider->delete();
+        $notification = array(
+            'message' => 'Slider Delete Succesfuly',
+            'alert-type' => 'error',
+        );
         return redirect()->route('slider.manage');
     }
 }

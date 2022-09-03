@@ -180,7 +180,11 @@ class ProductController extends Controller
             }
 
             $product->delete();
-            return redirect()->route('product.manage');
+            $notification = array(
+                'message' => 'Category Delete Succesfuly',
+                'alert-type' => 'error',
+            );
+            return redirect()->route('product.manage')->with($notification);
         }
         else{
             return redirect()->route('product.manage');

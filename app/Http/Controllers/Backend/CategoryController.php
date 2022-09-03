@@ -65,7 +65,11 @@ class CategoryController extends Controller
         }
         
         $category->save();
-        return redirect()->route('category.manage');
+        $notification = array(
+            'message' => 'Category Added Succesfuly',
+            'alert-type' => 'success',
+        );
+        return redirect()->route('category.manage')->with($notification);
     }
 
     /**
@@ -137,7 +141,11 @@ class CategoryController extends Controller
         }
         
         $category->save();
-        return redirect()->route('category.manage');
+        $notification = array(
+            'message' => 'Category Update Succesfuly',
+            'alert-type' => 'info',
+        );
+        return redirect()->route('category.manage')->with($notification);
     }
 
     /**
@@ -156,6 +164,10 @@ class CategoryController extends Controller
         }
 
         $category->delete();
-        return redirect()->route('category.manage');
+        $notification = array(
+            'message' => 'Category Delete Succesfuly',
+            'alert-type' => 'error',
+        );
+        return redirect()->route('category.manage')->with($notification);
     }
 }

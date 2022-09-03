@@ -21,52 +21,19 @@
                                     <li><a href="{{route ('about')}}"> <span>About</span></a></li>
                                     
                                     <li class="has-children position-static">
-                                        <a href="{{route ('shop')}}"><span>Shop</span> <i class="fa fa-angle-down"></i></a>
+                                        <a href="{{route ('product.all')}}"><span>Shop</span> <i class="fa fa-angle-down"></i></a>
                                         <ul class="mega-menu row-cols-4">
+                                            @foreach (App\Models\Backend\Category::orderBy('id', 'ASC')->where('parent_id', 0) ->get(); as $category)
                                             <li class="col">
-                                                <h4 class="mega-menu-title">Shop Layout</h4>
+                                                <h4 class="mega-menu-title"><a href="#">{{$category->name}}</a></h4>
                                                 <ul class="mb-n2">
-                                                    <li><a href="shop-grid.html">Shop Grid</a></li>
-                                                    <li><a href="shop-left-sidebar.html">Left Sidebar</a></li>
-                                                    <li><a href="shop-right-sidebar.html">Right Sidebar</a></li>
-                                                    <li><a href="shop-list-fullwidth.html">List Fullwidth</a></li>
-                                                    <li><a href="shop-list-left-sidebar.html">List Left Sidebar</a></li>
-                                                    <li><a href="shop-list-right-sidebar.html">List Right Sidebar</a></li>
+                                                    @foreach (App\Models\Backend\Category::orderBy('name', 'ASC')->where('parent_id', $category->id) ->get(); as $childCat)
+                                                    <li><a href="{{route ('product.show', $childCat->slug)}}">{{$childCat->name}}</a></li>
+                                                    @endforeach
                                                 </ul>
                                             </li>
-                                            <li class="col">
-                                                <h4 class="mega-menu-title">Product Layout</h4>
-                                                <ul class="mb-n2">
-                                                    <li><a href="single-product.html">Single Product</a></li>
-                                                    <li><a href="single-product-sale.html">Single Product Sale</a></li>
-                                                    <li><a href="single-product-group.html">Single Product Group</a></li>
-                                                    <li><a href="single-product-normal.html">Single Product Normal</a></li>
-                                                    <li><a href="single-product-affiliate.html">Single Product Affiliate</a></li>
-                                                    <li><a href="single-product-slider.html">Single Product Slider</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="col">
-                                                <h4 class="mega-menu-title">Product Layout</h4>
-                                                <ul class="mb-n2">
-                                                    <li><a href="single-product-gallery-left.html">Gallery Left</a></li>
-                                                    <li><a href="single-product-gallery-right.html">Gallery Right</a></li>
-                                                    <li><a href="single-product-tab-style-left.html">Tab Style Left</a></li>
-                                                    <li><a href="single-product-tab-style-right.html">Tab Style Right</a></li>
-                                                    <li><a href="single-product-sticky-left.html">Sticky Left</a></li>
-                                                    <li><a href="single-product-sticky-right.html">Sticky Right</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="col">
-                                                <h4 class="mega-menu-title">Other Pages</h4>
-                                                <ul class="mb-n2">
-                                                    <li><a href="my-account.html">My Account</a></li>
-                                                    <li><a href="login-register.html">Loging | Register</a></li>
-                                                    <li><a href="wishlist.html">Wishlist</a></li>
-                                                    <li><a href="cart.html">Cart</a></li>
-                                                    <li><a href="checkout.html">Checkout</a></li>
-                                                    <li><a href="compare.html">Compare</a></li>
-                                                </ul>
-                                            </li>
+                                            @endforeach
+                                           
                                         </ul>
                                     </li>
                                     <li><a href="{{route ('blog')}}"> <span>Blog</span></a></li>

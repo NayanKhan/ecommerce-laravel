@@ -15,9 +15,20 @@ use Illuminate\Support\Facades\Route;
     Route::get('/', "App\Http\Controllers\Frontend\PagesController@index")->name('home');
     Route::get('/about', "App\Http\Controllers\Frontend\PagesController@about")->name('about');
     Route::get('/blog', "App\Http\Controllers\Frontend\PagesController@blog")->name('blog');
-    Route::get('/shop', "App\Http\Controllers\Frontend\PagesController@shop")->name('shop');
-    Route::get('/single-product', "App\Http\Controllers\Frontend\PagesController@single_product")->name('single-product');
     Route::get('/contact', "App\Http\Controllers\Frontend\PagesController@contact")->name('contact');
+
+    // This Route Are For Products
+    Route::prefix('/products')->group(function () {
+        Route::get('/', "App\Http\Controllers\Frontend\ProductController@index")->name('product.all');
+        Route::get('/{slug}', "App\Http\Controllers\Frontend\ProductController@product_details")->name('product.show');
+
+         // This Route Are For All Categories
+        Route::get('/category', "App\Http\Controllers\Frontend\CategoriesController@index")->name('categories.all');
+          // This Route Are For Single Categories
+        Route::get('/category/{id}', "App\Http\Controllers\Frontend\CategoriesController@single_category")->name('child.cat');
+        
+    });
+
     // Route::post('/send-message', "App\Http\Controllers\Frontend\PagesController@sendMail")->name('contact.send');
 
 /*

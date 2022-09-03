@@ -139,7 +139,11 @@ class BrandController extends Controller
         }
         
         $brand->save();
-        return redirect()->route('brand.manage');
+        $notification = array(
+            'message' => 'Brand Update Succesfuly',
+            'alert-type' => 'info',
+        );
+        return redirect()->route('brand.manage')->with($notification);
     }
 
     /**
@@ -160,7 +164,7 @@ class BrandController extends Controller
         $brand->delete();
         $notification = array(
             'message' => 'Brand Delete Succesfuly',
-            'alert-type' => 'error',
+            'alert-type' => 'success',
         );
         return redirect()->route('brand.manage')->with($notification);
     }

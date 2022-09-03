@@ -7,13 +7,12 @@ use Illuminate\Http\Request;
 use App\Models\Backend\Product;
 use App\Models\Backend\ProductImage;
 use App\Models\Backend\Brand;
-use App\Models\Backend\Slider;
 use App\Models\Backend\Category;
 use Illuminate\Support\str;
 use File;
 use Image;
 
-class PagesController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,36 +21,19 @@ class PagesController extends Controller
      */
     public function index()
     {
-        $newProducts = Product::orderBy('id', 'ASC') ->get();
-        $sliders = Slider::orderBy('id', 'ASC') ->get();
-        return view('frontend.pages.homepage', compact('newProducts', 'sliders'));
+        $Products = Product::orderBy('id', 'ASC')->paginate(6);
+        return view('frontend.pages.products.product', compact('Products'));
     }
-
-    public function about()
-    {
-        return view('frontend.pages.about');
-    }
-
-    public function blog()
-    {
-        return view('frontend.pages.blog');
-    }
-
-
-    public function contact()
-    {
-        return view('frontend.pages.contact');
-    }
-
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function product_details ($slug)
     {
-        //
+        $productDetails = Product::Where('slug', $slug) ->first();
+        return view('frontend.pages.products.single-product', compact('productDetails'));
     }
 
     /**

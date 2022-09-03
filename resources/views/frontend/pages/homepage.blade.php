@@ -218,7 +218,7 @@
                                             <!-- Single Product Start -->
                                             <div class="product product-border-left mb-10" data-aos="fade-up" data-aos-delay="400">
                                                 <div class="thumb">
-                                                    <a href="single-product.html" class="image">
+                                                    <a href="{{route ('product.show', $newProduct->slug)}}" class="image">
                                                         @php $j=1; @endphp
                                                         @foreach ( $newProduct->images as $img)
                                                             @if ($j > 0)
@@ -237,8 +237,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="content">
-                                                    <h4 class="sub-title"><a href="single-product.html">{{ $newProduct->brand->name}}</a></h4>
-                                                    <h5 class="title"><a href="single-product.html">{{$newProduct->title}}</a></h5>
+                                                    <h4 class="sub-title"><a href="#">{{ $newProduct->brand->name}}</a></h4>
+                                                    <h5 class="title"><a href="{{route ('product.show', $newProduct->slug)}}l">{{$newProduct->title}}</a></h5>
                                                     <span class="ratings">
 															<span class="rating-wrap">
 																<span class="star" style="width: 67%"></span>
