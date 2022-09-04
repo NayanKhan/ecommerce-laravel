@@ -60,8 +60,13 @@
                     <!-- Shop Wrapper Start -->
                     <div class="row shop_wrapper grid_3">
 
+                    @php 
+                        $products = $category->products()->paginate(6);
 
-                    @foreach ($Products as $Product)
+                     @endphp
+                    @if( $products->count() > 0) 
+
+                        @foreach ($products as $Product)
                         <!-- Single Product Start -->
                         <div class="col-lg-4 col-md-4 col-sm-6 product" data-aos="fade-up" data-aos-delay="200">
                             <div class="product-inner">
@@ -108,6 +113,14 @@
                         </div>
                         <!-- Single Product End -->
                         @endforeach
+
+                    
+                    @else
+                        <div class="alert alert-warning">No product found in this category.</div>
+                    @endif
+
+
+                        
                        
 
                     </div>
@@ -170,56 +183,22 @@
                                 </div>
                             </div>
                             <div class="widget-list mb-10">
-                                <h3 class="widget-title mb-4">Menu Categories</h3>
+                                <h3 class="widget-title mb-4">Categories</h3>
                                 <!-- Widget Menu Start -->
                                 <nav>
                                     <ul class="category-menu mb-n3">
-                                        <li class="menu-item-has-children pb-4">
-                                            <a href="#">Women <i class="fa fa-angle-down"></i></a>
-                                            <ul class="dropdown">
-                                                <li><a href="#">Natural Cosmetic</a></li>
-                                                <li><a href="#">Woven Fashion Tops</a></li>
-                                                <li><a href="#">Knitted Fabrics</a></li>
-                                                <li><a href="#">Smart Watch</a></li>
-                                                <li><a href="#">Handmade Bag</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item-has-children pb-4">
-                                            <a href="#">Men <i class="fa fa-angle-down"></i></a>
-                                            <ul class="dropdown">
-                                                <li><a href="#">Sunglasses</a></li>
-                                                <li><a href="#">Belt and Wallet</a></li>
-                                                <li><a href="#">Lather Shoe</a></li>
-                                                <li><a href="#">Corporate Pant and Shirt</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item-has-children pb-4">
-                                            <a href="#">Kids <i class="fa fa-angle-down"></i></a>
-                                            <ul class="dropdown">
-                                                <li><a href="#">Kids Fashion</a></li>
-                                                <li><a href="#">Kids Toy</a></li>
-                                                <li><a href="#">Playground</a></li>
-                                                <li><a href="#">Video Games</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item-has-children pb-4">
-                                            <a href="#">Fashion <i class="fa fa-angle-down"></i></a>
-                                            <ul class="dropdown">
-                                                <li><a href="#">World Famous Fashion</a></li>
-                                                <li><a href="#">Champion Beauty</a></li>
-                                                <li><a href="#">Fashion of Nation</a></li>
-                                                <li><a href="#">Classic Looks</a></li>
-                                                <li><a href="#">Eye Fashion</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item-has-children pb-4">
-                                            <a href="#">Others <i class="fa fa-angle-down"></i></a>
-                                            <ul class="dropdown">
-                                                <li><a href="#">Winter Collection</a></li>
-                                                <li><a href="#">Sun Protection</a></li>
-                                                <li><a href="#">Water Resistant</a></li>
-                                            </ul>
-                                        </li>
+                                    
+                                         @foreach (App\Models\Backend\Category::orderBy('id', 'ASC')->where('parent_id', 0) ->get(); as $category)
+                                         <li class="menu-item-has-children pb-4">
+                                         <a href="#">{{$category->name}} <i class="fa fa-angle-down"></i></a>
+                                                <ul class="dropdown">
+                                                    @foreach (App\Models\Backend\Category::orderBy('name', 'ASC')->where('parent_id', $category->id) ->get(); as $childCat)
+                                                    <li><a href="{{route ('child.cat', $childCat->slug)}}">{{$childCat->name}}</a></li>
+                                                
+                                                    @endforeach
+                                                </ul>
+                                            </li>
+                                        @endforeach
                                     </ul>
                                 </nav>
                                 <!-- Widget Menu End -->
@@ -235,13 +214,12 @@
                                 <!-- Widget Menu End -->
                             </div>
                             <div class="widget-list mb-10">
-                                <h3 class="widget-title">Categories</h3>
+                                <h3 class="widget-title">Brand</h3>
                                 <div class="sidebar-body">
                                     <ul class="sidebar-list">
-                                        <li><a href="#">All Product</a></li>
-                                        <li><a href="#">Best Seller (5)</a></li>
-                                        <li><a href="#">Featured (4)</a></li>
-                                        <li><a href="#">New Products (6)</a></li>
+                                    @foreach (App\Models\Backend\Brand::orderBy('id', 'ASC') ->get(); as $brand)
+                                        <li><a href="#">{{$brand->name}}</a></li>
+                                    @endforeach
                                     </ul>
                                 </div>
                             </div>

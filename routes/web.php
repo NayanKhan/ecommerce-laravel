@@ -21,11 +21,15 @@ use Illuminate\Support\Facades\Route;
     Route::prefix('/products')->group(function () {
         Route::get('/', "App\Http\Controllers\Frontend\ProductController@index")->name('product.all');
         Route::get('/{slug}', "App\Http\Controllers\Frontend\ProductController@product_details")->name('product.show');
+        
+    });
 
+    // This Route Are For Categories
+    Route::prefix('/category')->group(function () {
          // This Route Are For All Categories
-        Route::get('/category', "App\Http\Controllers\Frontend\CategoriesController@index")->name('categories.all');
+        Route::get('/', "App\Http\Controllers\Frontend\CategoryController@index")->name('category.all');
           // This Route Are For Single Categories
-        Route::get('/category/{id}', "App\Http\Controllers\Frontend\CategoriesController@single_category")->name('child.cat');
+        Route::get('/{id}', "App\Http\Controllers\Frontend\CategoryController@show")->name('child.cat');
         
     });
 

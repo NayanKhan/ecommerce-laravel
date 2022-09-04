@@ -28,7 +28,7 @@
                                                 <h4 class="mega-menu-title"><a href="#">{{$category->name}}</a></h4>
                                                 <ul class="mb-n2">
                                                     @foreach (App\Models\Backend\Category::orderBy('name', 'ASC')->where('parent_id', $category->id) ->get(); as $childCat)
-                                                    <li><a href="{{route ('product.show', $childCat->slug)}}">{{$childCat->name}}</a></li>
+                                                    <li><a href="{{route ('child.cat', $childCat->id)}}">{{$childCat->name}}</a></li>
                                                     @endforeach
                                                 </ul>
                                             </li>

@@ -180,7 +180,7 @@
                                          <a href="#">{{$category->name}} <i class="fa fa-angle-down"></i></a>
                                                 <ul class="dropdown">
                                                     @foreach (App\Models\Backend\Category::orderBy('name', 'ASC')->where('parent_id', $category->id) ->get(); as $childCat)
-                                                    <li><a href="{{route ('product.show', $childCat->slug)}}">{{$childCat->name}}</a></li>
+                                                    <li><a href="{{route ('child.cat', $childCat->id)}}">{{$childCat->name}}</a></li>
                                                 
                                                     @endforeach
                                                 </ul>
