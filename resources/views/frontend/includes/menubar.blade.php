@@ -25,7 +25,7 @@
                                         <ul class="mega-menu row-cols-4">
                                             @foreach (App\Models\Backend\Category::orderBy('id', 'ASC')->where('parent_id', 0) ->get(); as $category)
                                             <li class="col">
-                                                <h4 class="mega-menu-title"><a href="#">{{$category->name}}</a></h4>
+                                                <h4 class="mega-menu-title"><a href="{{route ('child.cat', $category->id)}}">{{$category->name}}</a></h4>
                                                 <ul class="mb-n2">
                                                     @foreach (App\Models\Backend\Category::orderBy('name', 'ASC')->where('parent_id', $category->id) ->get(); as $childCat)
                                                     <li><a href="{{route ('child.cat', $childCat->id)}}">{{$childCat->name}}</a></li>

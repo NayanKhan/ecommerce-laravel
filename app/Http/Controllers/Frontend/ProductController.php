@@ -33,7 +33,8 @@ class ProductController extends Controller
     public function product_details ($slug)
     {
         $productDetails = Product::Where('slug', $slug) ->first();
-        return view('frontend.pages.products.single-product', compact('productDetails'));
+        $Products = Product::orderBy('id', 'ASC')->paginate(6);
+        return view('frontend.pages.products.single-product', compact('productDetails', 'Products'));
     }
 
     /**

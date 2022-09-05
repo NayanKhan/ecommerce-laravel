@@ -190,10 +190,10 @@
                                     
                                          @foreach (App\Models\Backend\Category::orderBy('id', 'ASC')->where('parent_id', 0) ->get(); as $category)
                                          <li class="menu-item-has-children pb-4">
-                                         <a href="#">{{$category->name}} <i class="fa fa-angle-down"></i></a>
+                                         <a href="{{route ('child.cat', $category->id)}}">{{$category->name}} <i class="fa fa-angle-down"></i></a>
                                                 <ul class="dropdown">
                                                     @foreach (App\Models\Backend\Category::orderBy('name', 'ASC')->where('parent_id', $category->id) ->get(); as $childCat)
-                                                    <li><a href="{{route ('child.cat', $childCat->slug)}}">{{$childCat->name}}</a></li>
+                                                    <li><a href="{{route ('child.cat', $childCat->id)}}">{{$childCat->name}}</a></li>
                                                 
                                                     @endforeach
                                                 </ul>
