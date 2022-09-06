@@ -21,6 +21,9 @@
 <script src="{{ asset('backend/js/ResizeSensor.js') }}"></script>
 <script src="{{ asset('backend/js/dashboard.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script src="https://cdn.ckeditor.com/4.19.1/standard/ckeditor.js"></script>
+
+
 <script>
     $(function(){
     'use strict'
@@ -98,4 +101,8 @@
     "showMethod": "fadeIn",
     "hideMethod": "fadeOut"
     }
+</script>
+
+<script type="text/javascript">
+    CKEDITOR.replace( 'description' );
 </script>

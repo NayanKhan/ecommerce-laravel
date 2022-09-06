@@ -20,7 +20,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->string('image')->nullable();
             $table->integer('parent_id')->default(0);
-            $table->integer('status')->default(2)->comment('1 = Active, 2 = Inactive');
+            $table->integer('status')->default(2)->comment( '1 = Active, 2 = Inactive');
             $table->timestamps();
         });
     }

@@ -22,7 +22,7 @@ class PagesController extends Controller
      */
     public function index()
     {
-        $newProducts = Product::orderBy('id', 'ASC') ->get();
+        $newProducts = Product::orderBy('id', 'ASC') ->get()->take(6);
         $sliders = Slider::orderBy('id', 'ASC') ->get();
         return view('frontend.pages.homepage', compact('newProducts', 'sliders'));
     }

@@ -91,7 +91,7 @@
                         <!-- SKU End -->
 
                         <!-- Description Start -->
-                        <p class="desc-content mb-5">{{$productDetails->description}}</p>
+                        <p class="desc-content mb-5">{{$productDetails->sdescription}}</p>
                         <!-- Description End -->
 
                         <!-- Product Meta Start -->

@@ -371,9 +371,9 @@
                             <h1 class="title">Daily Deals</h1>
                         </div>
                         <ul class="product-tab-nav nav mt-n3" data-aos="fade-left" data-aos-delay="300">
-                            <li class="nav-item"><a class="nav-link active mt-3" data-bs-toggle="tab" href="#product-deal-all">New Arrivals</a></li>
-                            <li class="nav-item"><a class="nav-link mt-3" data-bs-toggle="tab" href="#product-deal-clothings">Best Sellers</a></li>
-                            <li class="nav-item"><a class="nav-link mt-3" data-bs-toggle="tab" href="#product-deal-all">Sale Items</a></li>
+                            <li class="nav-item"><a class="nav-link active mt-3" data-bs-toggle="tab" href="#product-deal-all">All</a></li>
+                            <li class="nav-item"><a class="nav-link mt-3" data-bs-toggle="tab" href="#product-deal-clothings">Cloaths</a></li>
+                            <li class="nav-item"><a class="nav-link mt-3" data-bs-toggle="tab" href="#product-deal-all">Solar</a></li>
                         </ul>
                     </div>
                 </div>
@@ -389,14 +389,21 @@
                             <div class="product-deal-carousel">
                                 <div class="swiper-container">
                                     <div class="swiper-wrapper">
+                                        @foreach ($newProducts as $newProduct)
                                         <!-- Product Start -->
                                         <div class="swiper-slide product-wrapper" data-aos="fade-right" data-aos-delay="600">
 
                                             <!-- Single Product Deal Start -->
                                             <div class="product single-deal-product product-border-left">
                                                 <div class="thumb">
-                                                    <a href="single-product-sale.html" class="image">
-                                                        <img src="assets/images/products/medium-size/1.jpg" alt="Product" />
+                                                    <a href="{{route ('product.show', $newProduct->slug)}}" class="image">
+                                                        @php $j=1; @endphp
+                                                        @foreach ( $newProduct->images as $img)
+                                                            @if ($j > 0)
+                                                            <img src="{{asset('backend/img/products/'. $img->image)}}" alt="Product" />
+                                                            @endif
+                                                            @php $j--; @endphp
+                                                        @endforeach
                                                     </a>
                                                     <span class="badges">
 															<span class="sale">-30%</span>
@@ -407,8 +414,8 @@
                                                     <div class="countdown-area">
                                                         <div class="countdown-wrapper d-flex" data-countdown="2022/12/24"></div>
                                                     </div>
-                                                    <h4 class="sub-title"><a href="single-product-sale.html">Studio Design</a></h4>
-                                                    <h5 class="title"><a href="single-product-sale.html">Enjoy The Rest T-Shirt</a></h5>
+                                                <h4 class="sub-title"><a href="#">{{$newProduct->brand->name}}</a></h4>
+                                                    <h5 class="title"><a href="{{route ('product.show', $newProduct->slug)}}">{{$newProduct->title}}</a></h5>
                                                     <span class="ratings">
 															<span class="rating-wrap">
 																<span class="star" style="width: 100%"></span>
@@ -416,8 +423,12 @@
                                                     <span class="rating-num">(4)</span>
                                                     </span>
                                                     <span class="price">
-															<span class="new">$38.00</span>
-                                                    <span class="old">$42.05</span>
+                                                        @if (!is_null($newProduct->offerprice))
+                                                            <span class="new">${{$newProduct->offerprice}}</span>
+                                                            <span class="old">${{$newProduct->price}}</span>
+                                                        @else
+                                                        <span class="new">${{$newProduct->price}}</span>
+                                                        @endif
                                                     </span>
                                                     <button class="btn btn-sm btn-outline-dark btn-hover-primary">Add To Cart</button>
                                                 </div>
@@ -426,76 +437,9 @@
 
                                         </div>
                                         <!-- Product End -->
+                                        @endforeach
 
-                                        <!-- Product Start -->
-                                        <div class="swiper-slide product-wrapper" data-aos="fade-left" data-aos-delay="600">
-
-                                            <!-- Single Product Deal Start -->
-                                            <div class="product single-deal-product product-border-left">
-                                                <div class="thumb">
-                                                    <a href="single-product-sale.html" class="image">
-                                                        <img src="assets/images/products/medium-size/8.jpg" alt="Product" />
-                                                    </a>
-                                                </div>
-                                                <div class="content">
-                                                    <p class="inner-desc">Hurry Up! Offer Ends In:</p>
-                                                    <div class="countdown-area">
-                                                        <div class="countdown-wrapper d-flex" data-countdown="2022/12/24"></div>
-                                                    </div>
-                                                    <h4 class="sub-title"><a href="single-product-sale.html">Studio Design</a></h4>
-                                                    <h5 class="title"><a href="single-product-sale.html">Classic Trucker Hat</a></h5>
-                                                    <span class="ratings">
-															<span class="rating-wrap">
-																<span class="star" style="width: 65%"></span>
-                                                    </span>
-                                                    <span class="rating-num">(3)</span>
-                                                    </span>
-                                                    <span class="price">
-															<span class="new">$07.00</span>
-                                                    <span class="old">$08.40</span>
-                                                    </span>
-                                                    <button class="btn btn-sm btn-outline-dark btn-hover-primary">Add To Cart</button>
-                                                </div>
-                                            </div>
-                                            <!-- Single Product Deal End -->
-
-                                        </div>
-                                        <!-- Product End -->
-
-                                        <!-- Product Start -->
-                                        <div class="swiper-slide product-wrapper">
-
-                                            <!-- Single Product Deal Start -->
-                                            <div class="product single-deal-product product-border-left">
-                                                <div class="thumb">
-                                                    <a href="single-product-sale.html" class="image">
-                                                        <img src="assets/images/products/medium-size/9.jpg" alt="Product" />
-                                                    </a>
-                                                </div>
-                                                <div class="content">
-                                                    <p class="inner-desc">Hurry Up! Offer Ends In:</p>
-                                                    <div class="countdown-area">
-                                                        <div class="countdown-wrapper d-flex" data-countdown="2022/12/24"></div>
-                                                    </div>
-                                                    <h4 class="sub-title"><a href="single-product-sale.html">Studio Design</a></h4>
-                                                    <h5 class="title"><a href="single-product-sale.html">Basic Lather Sneaker</a></h5>
-                                                    <span class="ratings">
-															<span class="rating-wrap">
-																<span class="star" style="width: 80%"></span>
-                                                    </span>
-                                                    <span class="rating-num">(2)</span>
-                                                    </span>
-                                                    <span class="price">
-															<span class="new">$88.00</span>
-                                                    <span class="old">$92.50</span>
-                                                    </span>
-                                                    <button class="btn btn-sm btn-outline-dark btn-hover-primary">Add To Cart</button>
-                                                </div>
-                                            </div>
-                                            <!-- Single Product Deal End -->
-
-                                        </div>
-                                        <!-- Product End -->
+                                        
 
                                     </div>
 

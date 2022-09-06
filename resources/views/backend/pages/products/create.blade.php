@@ -28,8 +28,8 @@
                     </div>
                     
                     <div class="form-group">
-                      <label>Description</label>
-                      <input type="text" name="description" class="form-control" autocomplete="off" required="required">
+                      <label>Products Tag</label>
+                      <input type="text" name="tags" class="form-control" autocomplete="off">
                     </div>
 
                     <div class="form-group">
@@ -99,14 +99,38 @@
                       </div>
 
                       <div class="form-group">
+                        <label>Short Description</label>
+                        <textarea class="form-control" name="sdescription"></textarea>
+                      </div>
+
+                  </div>
+
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label>Description</label>
+                        <textarea class="form-control" rows="2" name="description"></textarea>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-3">
+                    <div class="form-group">
+                        <label>Status</label>
+                        <select name="featured" class="form-control">
+                          <option>Please Slecet the Featured</option>
+                          <option value="1">Yes</option>
+                          <option value="2">No</option>
+                        </select>
+                    </div>
+                  </div>
+                  <div class="col-lg-3">
+                    <div class="form-group">
                         <label>Status</label>
                         <select name="status" class="form-control">
                           <option>Please Slecet the Status</option>
                           <option value="1">Active</option>
                           <option value="2">Inactive</option>
                         </select>
-                    </div>
-
+                      </div>
                   </div>
 
                   <div class="col-lg-12">

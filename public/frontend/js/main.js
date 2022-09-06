@@ -177,7 +177,7 @@
 
 	/* Product Deal Crousel Activation */
 	var productCarousel = new Swiper('.product-deal-carousel .swiper-container', {
-        loop: true,
+        loop: false,
         slidesPerView: 2,
 		spaceBetween: 0,
 		pagination: true,

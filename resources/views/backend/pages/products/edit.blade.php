@@ -28,8 +28,8 @@
                     </div>
                     
                     <div class="form-group">
-                      <label>Description</label>
-                      <input type="text" name="description" value="{{ $product->description }}" class="form-control" autocomplete="off" required="required">
+                      <label>Tags</label>
+                      <input type="text" name="tags" value="{{ $product->tags }}" class="form-control" autocomplete="off" required="required">
                     </div>
 
                     <div class="form-group">
@@ -129,16 +129,41 @@
                           @endforeach
                         <input type="file" name="p_image[]" class="form-control" >
                       </div>
-
+                      
                       <div class="form-group">
+                        <label>Short Description</label>
+                        <textarea class="form-control" name="sdescription">{{ $product->sdescription }}</textarea>
+                      </div>
+
+                  </div>
+                  
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label>Description</label>
+                      <textarea id="editor" class="form-control" name="description" rows="4">{{ $product->description }}</textarea>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-3">
+                    <div class="form-group">
+                        <label>Featured</label>
+                        <select name="featured" class="form-control">
+                          <option>Please Slecet the Featured</option>
+                          <option value="1" @if( $product->featured == 1) selected @endif>Yes</option>
+                        <option value="2" @if( $product->featured == 2) selected @endif>No</option>
+                        </select>
+                      </div>
+                  </div>
+
+                  <div class="col-lg-3">
+                    <div class="form-group">
                         <label>Status</label>
                         <select name="status" class="form-control">
                           <option>Please Slecet the Status</option>
-                          <option value="1" @if( $category->status == 1) selected @endif>Active</option>
-                        <option value="2" @if( $category->status == 2) selected @endif>Inactive</option>
+                          <option value="1" @if( $product->status == 1) selected @endif>Active</option>
+                        <option value="2" @if( $product->status == 2) selected @endif>Inactive</option>
                         </select>
-                    </div>
-
+                      </div>
                   </div>
 
                   <div class="col-lg-12">
