@@ -94,32 +94,39 @@
                                 <h3 class="widget-title mb-4">Tags</h3>
                                 <div class="sidebar-body">
                                     <ul class="tags mb-n2">
-                                        <li><a href="#">Men</a></li>
-                                        <li><a href="#">Women</a></li>
-                                        <li><a href="#">Fashion</a></li>
-                                        <li><a href="#">Watch</a></li>
-                                        <li><a href="#">Handmade</a></li>
-                                        <li><a href="#">Lather</a></li>
-                                        <li><a href="#">Fabrics</a></li>
+                                    @foreach ($Products as $Product)
+                                        <li><a href="#">{{$Product->tags}}</a></li>
+                                    @endforeach
                                     </ul>
                                 </div>
                             </div>
                             <div class="widget-list">
                                 <h3 class="widget-title mb-4">Recent Products</h3>
                                 <div class="sidebar-body product-list-wrapper mb-n6">
+
+                                    @foreach ($Products as $Product)
                                     <!-- Single Product List Start -->
                                     <div class="single-product-list product-hover mb-6">
                                         <div class="thumb">
-                                            <a href="single-product.html" class="image">
-                                                <img class="first-image" src="assets/images/products/small-product/1.jpg" alt="Product" />
-                                                <img class="second-image" src="assets/images/products/small-product/5.jpg" alt="Product" />
+                                            <a href="{{route ('product.show', $Product->slug)}}" class="image">
+                                                @php $j=1; @endphp
+                                                @foreach ( $Product->images as $img)
+                                                    @if ($j > 0)
+                                                    <img src="{{asset('backend/img/products/'. $img->image)}}" alt="Product" />
+                                                    @endif
+                                                    @php $j--; @endphp
+                                                @endforeach
                                             </a>
                                         </div>
                                         <div class="content">
-                                            <h5 class="title"><a href="single-product.html">Brother Hoddies in Grey</a></h5>
+                                            <h5 class="title"><a href="{{route ('product.show', $Product->slug)}}">{{ $Product->title}}</a></h5>
                                             <span class="price">
-													<span class="new">$38.00</span>
-                                            <span class="old">$42.50</span>
+                                                @if (!is_null($Product->offerprice))
+                                                    <span class="new">${{$Product->offerprice}}</span>
+                                                    <span class="old">${{$Product->price}}</span>
+                                                @else
+                                                <span class="new">${{$Product->price}}</span>
+                                                @endif
                                             </span>
                                             <span class="ratings">
 													<span class="rating-wrap">
@@ -130,54 +137,10 @@
                                         </div>
                                     </div>
                                     <!-- Single Product List End -->
+                                    @endforeach
+                                 
 
-                                    <!-- Single Product List Start -->
-                                    <div class="single-product-list product-hover mb-6">
-                                        <div class="thumb">
-                                            <a href="single-product.html" class="image">
-                                                <img class="first-image" src="assets/images/products/small-product/2.jpg" alt="Product" />
-                                                <img class="second-image" src="assets/images/products/small-product/3.jpg" alt="Product" />
-                                            </a>
-                                        </div>
-                                        <div class="content">
-                                            <h5 class="title"><a href="single-product.html">Basic Jogging Shorts</a></h5>
-                                            <span class="price">
-													<span class="new">$21.00</span>
-                                            <span class="old">$22.50</span>
-                                            </span>
-                                            <span class="ratings">
-													<span class="rating-wrap">
-														<span class="star" style="width: 60%"></span>
-                                            </span>
-                                            <span class="rating-num">(4)</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <!-- Single Product List End -->
-
-                                    <!-- Single Product List Start -->
-                                    <div class="single-product-list product-hover mb-6">
-                                        <div class="thumb">
-                                            <a href="single-product.html" class="image">
-                                                <img class="first-image" src="assets/images/products/small-product/4.jpg" alt="Product" />
-                                                <img class="second-image" src="assets/images/products/small-product/10.jpg" alt="Product" />
-                                            </a>
-                                        </div>
-                                        <div class="content">
-                                            <h5 class="title"><a href="single-product.html">Simple Woven Fabrics</a></h5>
-                                            <span class="price">
-													<span class="new">$86.00</span>
-                                            <span class="old">$90.00</span>
-                                            </span>
-                                            <span class="ratings">
-													<span class="rating-wrap">
-														<span class="star" style="width: 80%"></span>
-                                            </span>
-                                            <span class="rating-num">(1)</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <!-- Single Product List End -->
+                                    
                                 </div>
                             </div>
                         </div>

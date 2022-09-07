@@ -34,7 +34,8 @@ class PagesController extends Controller
 
     public function blog()
     {
-        return view('frontend.pages.blog');
+        $Products = Product::orderBy('id', 'ASC')->paginate(6);
+        return view('frontend.pages.blog', compact('Products'));
     }
 
 

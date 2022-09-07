@@ -32,9 +32,10 @@ class CategoryController extends Controller
     public function show($id)
     {
         
+        $Products = Product::orderBy('id', 'desc')->paginate(6);
         $category = Category::find($id);
         if(!is_null($category)){
-            return view('frontend.pages.categories.category', compact('category'));
+            return view('frontend.pages.categories.category', compact('category', 'Products'));
         }
         else {
             return redirect()->route('home');
